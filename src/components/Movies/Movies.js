@@ -15,13 +15,13 @@ export default function Movies() {
   const error = useSelector( (state) => state.movies.request.error );
   const dispatch = useDispatch();
 
-  const requestMovies =async()=>{
+  const requestMovies = async() => {
     dispatch( getAllMovies() );
-  }
+  };
 
   useEffect( () => {
-    requestMovies()
-  }, [  ] );
+    requestMovies();
+  }, [] );
 
   return (
     <section className={ styles.movies }>
@@ -33,20 +33,20 @@ export default function Movies() {
       </Link>
       {
         isLoading ? (
-          <Loading />
-        ) :
+            <Loading />
+          ) :
           !!error ? (
-          <>
-            <p className="error">Ошибка загрузки: {error} </p>
-            <Button  text="Перезагрузить" func={requestMovies}/>
-          </>
-        ) : (
-          <ul className={ styles[ "movies__list" ] }>
-            {
-              movies.map( movie => <MovieCard movie={ movie } key={ movie.id } /> )
-            }
-          </ul>
-        )
+            <>
+              <p className="error">Ошибка загрузки: { error } </p>
+              <Button text="Перезагрузить" func={ requestMovies } />
+            </>
+          ) : (
+            <ul className={ styles[ "movies__list" ] }>
+              {
+                movies.map( movie => <MovieCard movie={ movie } key={ movie.id } /> )
+              }
+            </ul>
+          )
       }
     </section>
   );

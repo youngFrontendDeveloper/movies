@@ -1,6 +1,5 @@
 import styles from "./Form.module.scss";
 import TextField from "./TextField/TextField";
-// import FileField from "./FileField/FileField";
 import Button from "../Button/Button";
 
 
@@ -30,24 +29,18 @@ export default function Form({
                 return (
                   <TextField
                     item={ item }
-                    register={ register( `${ item.name }`
+                    register={ register( `${ item.name }`, {
+                        required: "Пожалуйста, введите не менее 4-x символов",
+                        minLength: {
+                          value: 4,
+                          message: "Должно быть не менее 4-x символов",
+                        },
+                      }
                     ) }
                     errors={ errors[ item.name ] }
                     key={ `${ item.name }-${ index }` }
                   />
                 );
-
-              // case( "file" ):
-              //   return (
-              //     <FileField
-              //       item={ item }
-              //       register={ register( `${ item.name }` ) }
-              //       errors={ errors[ item.name ] }
-              //       messageText={ messageText }
-              //       key={ `${ item.name }-${ index }` }
-              //     />
-              //
-              //   );
 
               default:
                 return null;

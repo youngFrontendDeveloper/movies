@@ -10,7 +10,6 @@ export default function FoundResult({foundMovies, nothingFound}){
           <ol>
             {
               foundMovies.map( item => {
-                console.log(item.id);
                 return (
 
                   <li key={ `search-${ item.id }` } className={styles["search-result__item"]}>

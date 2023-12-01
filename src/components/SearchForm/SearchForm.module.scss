@@ -1,6 +1,6 @@
 @use "../../styles/variables" as variable;
 
-.search-form__wrapper{
+.search-form__wrapper {
   width: 100%;
   max-width: 600px;
   margin: 0 auto 30px;
@@ -11,6 +11,12 @@
   flex-direction: column;
   width: 100%;
   margin-bottom: 20px;
+
+  &--error {
+    margin: 0 0 18px 0;
+    font-size: 14px;
+    color: variable.$color-red;
+  }
 }
 
 .search-form__item {

@@ -14,21 +14,9 @@ export default function ChangeMovie({ isNewFilm, }) {
   const dispatch = useDispatch();
   const [ isSuccess, setSuccess ] = useState( false );
   const [ formFields, setFormFields ] = useState( [] );
-  const [ isMessageSent, setMessageSent ] = useState( false );
-  const [ data, setData ] = useState( {} );
-  const { register, handleSubmit, setValue, getValues, formState: { errors, } } = useForm( {
-    // resolver: yupResolver( schema ),
+  const { register, handleSubmit, formState: { errors, } } = useForm( {
     mode: "onTouched",
   } );
-  const [ error, setError ] = useState( {
-    name: [],
-    genre: [],
-    description: [],
-    actors: [],
-    poster: [],
-
-  } );
-  const onError = (errors, e) => console.log( errors, e );
 
   useEffect( () => {
     setFormFields( [
@@ -118,14 +106,6 @@ export default function ChangeMovie({ isNewFilm, }) {
         errors={ errors }
         handleSubmit={ handleSubmit }
         onSubmit={ onSubmit }
-        onError={ onError }
-        // handleChangeSelect={ handleChangeSelect }
-        // isMessageSent={ isMessageSent }
-        // messageText="Ваши данные успешно отправлены"
-        data={ data }
-        error={ error }
-        // btnClass={btnClass}
-        // func={func}
         btnText="Отправить"
 
       />

@@ -23,7 +23,6 @@
   "scripts": {
     "server": "json-server movies.json",
     "start": "set PORT=3001 && react-scripts start ",
-    "dev": "npm run server && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

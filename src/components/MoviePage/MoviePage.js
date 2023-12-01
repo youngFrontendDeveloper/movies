@@ -1,4 +1,3 @@
-// import "./MoviePage.module.scss";
 import { Link, useParams } from "react-router-dom";
 import styles from "./MoviePage.module.scss";
 import { useSelector } from "react-redux";

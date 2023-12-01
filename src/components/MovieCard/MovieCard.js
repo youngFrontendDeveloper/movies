@@ -27,7 +27,7 @@ export default function MovieCard({ movie }) {
             <p className="error">Ошибка загрузки: { error }</p>
           </>
         ) : (
-          <li className={ styles.movie } id={ movie.id }>
+          <li className={ styles.movie } id={ movie.id } key={movie.id}>
             <div className={ styles[ "movie__img-block" ] }>
               <Link to={ `/movie/${ movie.id }` } className="link">
                 <img src={ movie.poster } className={ styles.movie__img } alt={ movie.name } />
