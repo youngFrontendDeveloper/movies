@@ -1,0 +1,18 @@
+@use "../../styles/variables" as variable;
+.search-result {
+  margin-bottom: 20px;
+}
+
+.search-result__item {
+  color: variable.$color-link;
+}
+
+.search-result__link {
+  font-weight: 600;
+  color: variable.$color-link;
+  text-decoration: none;
+
+  &:hover {
+    color: variable.$color-link-hover;
+  }
+}

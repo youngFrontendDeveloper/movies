@@ -1,0 +1,113 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "name": "DogMan",
+      "genre": "Драма",
+      "description": " A boy, bruised by life, finds his salvation through the love of his dogs",
+      "actors": [
+        "Caleb Landry Jones",
+        "Christopher Denham",
+        "Jojo T. Gibbs"
+      ],
+      "poster": "/images/poster1.jpg",
+      "rating": 4.9
+    },
+    {
+      "id": 2,
+      "name": "Nowhere",
+      "genre": "Триллер",
+      "description": "A young pregnant woman named Mia escapes from a country at war by hiding in a maritime container aboard a cargo ship. After a violent storm, Mia gives birth to the child while lost at sea, where she must fight to survive.",
+      "actors": [
+        "Anna Castillo",
+        "Tamar Novas",
+        "Tony Corvillo"
+      ],
+      "poster": "/images/poster2.jpg",
+      "rating": 4.8
+    },
+    {
+      "id": 5,
+      "name": "Summoning Sylvia",
+      "genre": "Драма",
+      "description": "A gay bachelor party turned spooky when sinister spirits are suddenly summoned",
+      "actors": [
+        "Frankie Grande",
+        "Travis Coles",
+        "Troy Iwata"
+      ],
+      "poster": "/images/poster5.jpg",
+      "rating": 4
+    },
+    {
+      "id": 1701339195303,
+      "name": "Иван Васильевич меняет профессию",
+      "genre": "Комедия",
+      "description": "Шикарная комедия для всей семьи",
+      "actors": [
+        "Александр Демьяненко",
+        " Юрий Яковлев",
+        " Леонид Куравлев"
+      ],
+      "poster": "/images/poster8.jpg",
+      "rating": 5
+    },
+    {
+      "id": 1701340628420,
+      "name": "Джентльмены удачи",
+      "genre": "Комедия",
+      "description": "У археологической экспедиции воры крадут золотой шлем",
+      "actors": [
+        "Евгений Леонов",
+        " Георгий Вицин",
+        " Савелий Крамаров"
+      ],
+      "poster": "/images/poster7.jpg",
+      "rating": 5
+    },
+    {
+      "id": 1701340633162,
+      "name": "Ирония судьбы",
+      "genre": "Комедия",
+      "description": "Женя по ошибке прилетает в Ленинград и заходит в чужую квартиру, спутав ее со своей Московской квартирой.",
+      "actors": [
+        "Андрей Мягков",
+        " Барбара Брыльска",
+        " Юрий Яковлев"
+      ],
+      "poster": "/images/poster_any.png",
+      "rating": 5
+    },
+    {
+      "id": 1701341698178,
+      "name": "Золушка",
+      "genre": "Сказка",
+      "description": "Сказка о злой мачехе и доброй, скромной и работящей девушке, которой за ее доброту помогла фея",
+      "actors": [
+        "Янина Жеймо",
+        " Алексей Консовский",
+        "  Фаина Раневская"
+      ],
+      "poster": "/images/poster_any.png",
+      "rating": 4.5
+    },
+    {
+      "id": 1701424260261,
+      "name": "Чародеи",
+      "genre": "Комедия",
+      "description": "Двухсерийная телевизионная музыкальная комедия с элементами фантастики - о любви и коварстве, о волшебных силах, которые помогают жениху (Александр Абдулов) после множества приключений накануне Нового года расколдовать его возлюбленную (Александра Яковлева), научную сотрудницу Института волшебства.",
+      "actors": [
+        "Александра Яковлева",
+        " Александр Абдулов",
+        " Валентин Гафт",
+        " Екатерина Васильева",
+        " Валерий Золотухин",
+        " Эммануил Виторган",
+        " Михаил Светин",
+        " Семён Фарада"
+      ],
+      "poster": "/images/poster6.jpg",
+      "rating": 4.9
+    }
+  ]
+}

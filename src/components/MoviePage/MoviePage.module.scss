@@ -1,0 +1,67 @@
+@use "../../styles/variables" as variable;
+
+.movie-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  padding: 15px;
+
+
+  @media screen and (min-width: variable.$width-md) {
+    justify-content: space-between;
+  }
+}
+
+.movie-page__main-title {
+  margin-bottom: 50px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.movie-page__link {
+  margin-bottom: 30px;
+}
+
+.movie-page__img-block {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 300px;
+
+  @media screen and (min-width: variable.$width-md) {
+    justify-content: flex-start;
+  }
+}
+
+.movie-page__img {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movie-page__text-block {
+  min-width: 250px;
+  flex-basis: 250px;
+  flex-grow: 1;
+}
+
+.movie-page__description {
+  width: 100%;
+  color: variable.$color-text;
+}
+
+.movie-page__span {
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.movie-page__title {
+  font-weight: 400;
+  color: variable.$color-title;
+}
+
+

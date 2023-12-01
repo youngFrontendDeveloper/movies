@@ -1,0 +1,60 @@
+@use "./styles/variables" as variable;
+
+* {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  padding: 20px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: variable.$color-link;
+
+  &:hover {
+    color: variable.$color-link-hover;
+  }
+}
+
+
+.title {
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  color: variable.$color-title;
+}
+
+.error {
+  width: 100%;
+  margin-bottom: 30px;
+  color: variable.$color-red;
+}
+
+//will-change: transform;
+
+

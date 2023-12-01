@@ -1,0 +1,24 @@
+@use "../../styles/variables" as variable;
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movies__title {
+  margin-bottom: 40px;
+}
+
+.movies__link {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.movies__list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
