@@ -1,0 +1,34 @@
+@use "../../styles/variables" as variable;
+
+.button {
+  position: relative;
+  width: max-content;
+  padding: 10px 15px;
+  color: variable.$color-btn;
+  border-radius: 7px;
+  border: transparent;
+  background-color: variable.$color-bg-btn;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::after {
+    background: linear-gradient(-45deg, transparent, rgba(191, 226, 255, .5), transparent);
+    content: "";
+    height: 100%;
+    left: -100%;
+    position: absolute;
+    top: 0;
+    transition: left .5s;
+    width: 100%;
+  }
+}
+
+.btn--bg-red {
+  background-color: variable.$color-red;
+}
+
+.button:hover {
+  &::after {
+    left: 100%;
+  }
+}

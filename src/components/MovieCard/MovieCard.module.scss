@@ -1,0 +1,100 @@
+@use "../../styles/variables" as variable;
+
+.movie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid variable.$color-border;
+
+  @media screen and (min-width: variable.$width-md) {
+    justify-content: space-between;
+  }
+}
+
+.movie__img-block {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 300px;
+
+  @media screen and (min-width: variable.$width-md) {
+    justify-content: flex-start;
+  }
+}
+
+.movie__img {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.movie__text-block {
+  min-width: 250px;
+  flex-basis: 250px;
+  flex-grow: 1;
+}
+
+.movie__description {
+  width: 100%;
+  height: 32px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+.movie__span {
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.movie__title {
+  font-weight: 400;
+  color: variable.$color-title;
+}
+
+.movie__description {
+  color: variable.$color-text;
+}
+
+.movie__btn-wrap {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.movie__change {
+  position: relative;
+  width: max-content;
+  padding: 10px 15px;
+  color: variable.$color-btn;
+  text-decoration: none;
+  border-radius: 7px;
+  border: transparent;
+  background-color: variable.$color-bg-btn;
+  cursor: pointer;
+  overflow: hidden;
+
+  &::after {
+    background: linear-gradient(-45deg, transparent, rgba(191, 226, 255, .5), transparent);
+    content: "";
+    height: 100%;
+    left: -100%;
+    position: absolute;
+    top: 0;
+    transition: left .5s;
+    width: 100%;
+  }
+
+}
+
+.movie__change:hover {
+  &::after {
+    left: 100%;
+  }
+}

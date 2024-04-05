@@ -1,0 +1,52 @@
+@use "../../styles/variables" as variable;
+
+.search-form__wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &--error {
+    margin: 0 0 18px 0;
+    font-size: 14px;
+    color: variable.$color-red;
+  }
+}
+
+.search-form__item {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.search-form__label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.search-form__input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+::-webkit-input-placeholder {
+  color: variable.$color-placeholder;
+}
+
+::-moz-placeholder {
+  color: variable.$color-placeholder;
+}
+
+:-moz-placeholder {
+  color: variable.$color-placeholder;
+}
+
+:-ms-input-placeholder {
+  color: variable.$color-placeholder;
+}
