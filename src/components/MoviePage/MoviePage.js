@@ -7,7 +7,6 @@ import Loading from "../Loading/Loading";
 export default function MoviePage() {
   const { movieId } = useParams();
   const { data: movie, isLoading, isError, error } = useGetSingleMovieQuery( movieId );
-  console.log(movie);
 
   return (
     <section>

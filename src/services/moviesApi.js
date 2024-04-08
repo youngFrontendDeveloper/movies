@@ -1,7 +1,6 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { collection, doc, getDoc, getDocs, addDoc, deleteDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { database } from "../firebase/farebase";
-import { toast } from "react-toastify";
 
 
 export const moviesApi = createApi( {
