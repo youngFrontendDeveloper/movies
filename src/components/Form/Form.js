@@ -1,6 +1,8 @@
 import styles from "./Form.module.scss";
 import TextField from "./TextField/TextField";
 import Button from "../Button/Button";
+import FileField from "./FileField/FileField";
+
 
 
 export default function Form({
@@ -15,7 +17,11 @@ export default function Form({
                                btnClass,
                                btnText,
                                func,
-
+                               progress,
+                               imageErr,
+                               imageName,
+                               handleChangeImage,
+                               handleDeleteImage,
                              }) {
 
   return (
@@ -41,6 +47,19 @@ export default function Form({
                     key={ `${ item.name }-${ index }` }
                   />
                 );
+              case( "file" ):
+                return (
+                  <FileField
+                    item={ item }
+                    register={ register( `${ item.name }` ) }
+                    errors={ errors[ item.name ] }
+                    error={ imageErr }
+                    imageName={ imageName }
+                    key={ `${ item.name }-${ index }` }
+                    handleChangeImage={ handleChangeImage }
+                    handleDeleteImage={ handleDeleteImage }
+                  />
+                );
 
               default:
                 return null;
@@ -56,7 +75,7 @@ export default function Form({
 
         { isMessageSent ? <p className={ styles[ "form__success" ] }>{ messageText }</p> : null }
 
-        <Button btnClass={btnClass} func={func} text={ btnText } />
+        <Button btnClass={btnClass} func={func} text={ btnText } progress={progress}/>
       </form>
 
     </>

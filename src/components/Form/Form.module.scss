@@ -230,3 +230,31 @@
     top: 8px;
   }
 }
+
+.form__input-file {
+  width: 140px;
+  height: 48px;
+  margin-left: 0;
+  padding: 7px 10px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1;
+  background-color: white;
+  border: 1px solid #048e22;
+  border-radius: 5px;
+  outline: transparent;
+
+  @media screen and (min-width: variable.$width-md) {
+    margin-left: 30%;
+  }
+}
+
+.form__image-name {
+  width: calc(100% - 176px);
+  height: 48px;
+  overflow: hidden;
+
+  @media screen and (min-width: variable.$width-md) {
+    width: calc(70% - 176px);
+  }
+}

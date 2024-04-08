@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Form.module.scss";
 
 export default function TextField({ item, register, errors, }) {
-
+  // console.log(item.defaultValue );
   return (
     <div>
       <p className={ styles[ "form__item" ] }>

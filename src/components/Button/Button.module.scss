@@ -21,6 +21,11 @@
     transition: left .5s;
     width: 100%;
   }
+
+  &:disabled{
+    background-color: variable.$color-bg-btn-disabled;
+    cursor: none;
+  }
 }
 
 .btn--bg-red {

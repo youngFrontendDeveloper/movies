@@ -1,0 +1,10 @@
+.close {
+  display: inline-block;
+  margin-left: auto;
+}
+
+.close__icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition:transform, 0.2s;
+}
