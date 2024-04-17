@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import FileField from "./FileField/FileField";
 
 
-
 export default function Form({
                                formFields,
                                register,
@@ -22,6 +21,7 @@ export default function Form({
                                imageName,
                                handleChangeImage,
                                handleDeleteImage,
+                               handleChangeText,
                              }) {
 
   return (
@@ -41,6 +41,9 @@ export default function Form({
                           value: 4,
                           message: "Должно быть не менее 4-x символов",
                         },
+                        // onChange: (e) => {
+                        //   handleChangeText( e );
+                        // }
                       }
                     ) }
                     errors={ errors[ item.name ] }
@@ -75,7 +78,7 @@ export default function Form({
 
         { isMessageSent ? <p className={ styles[ "form__success" ] }>{ messageText }</p> : null }
 
-        <Button btnClass={btnClass} func={func} text={ btnText } progress={progress}/>
+        <Button btnClass={ btnClass } func={ func } text={ btnText } progress={ progress } />
       </form>
 
     </>

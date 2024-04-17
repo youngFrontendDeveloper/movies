@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Form.module.scss";
 
 export default function TextField({ item, register, errors, }) {
-  // console.log(item.defaultValue );
+  console.log(item.defaultValue );
   return (
     <div>
       <p className={ styles[ "form__item" ] }>
@@ -16,7 +16,8 @@ export default function TextField({ item, register, errors, }) {
           name={ item.name }
           id={ item.name }
           placeholder={ item.placeholder }
-          defaultValue={ item.defaultValue ? item.defaultValue : "" }
+          // defaultValue={ item.defaultValue ? item.defaultValue : "" }
+          defaultValue={ item?.defaultValue }
           { ...register }
         />
       </p>

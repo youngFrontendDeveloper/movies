@@ -2,6 +2,7 @@ import styles from "./MoviePage.module.scss";
 import { Link, useParams } from "react-router-dom";
 import { useGetSingleMovieQuery } from "../../services/moviesApi";
 import Loading from "../Loading/Loading";
+import StarIcon from "../StarIcon/StarIcon";
 
 
 export default function MoviePage() {
@@ -49,7 +50,7 @@ export default function MoviePage() {
                 </p>
                 <p className={ `${ styles[ "movie-page__text" ] }` }>
                   <span className={ styles[ "movie-page__span" ] }>Рейтинг: </span>
-                  { movie?.rating }
+                  { movie?.rating } <StarIcon />
                 </p>
 
               </div>

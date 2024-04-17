@@ -56,7 +56,7 @@ export default function SearchForm() {
       <form onSubmit={handleSubmit(onSubmit)} className={styles['search-form']}>
         <div className={styles['search-form__item']}>
           <label htmlFor="name" className={styles['search-form__label']}>
-            Поиск по названию, описанию, жанру фильма:
+            Поиск по названию или описанию фильма:
           </label>
           <input
             id="name"

@@ -32,6 +32,10 @@
   background-color: variable.$color-red;
 }
 
+.btn--bg-green {
+  background-color: variable.$color-light-green;
+}
+
 .button:hover {
   &::after {
     left: 100%;

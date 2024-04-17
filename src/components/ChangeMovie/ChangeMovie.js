@@ -11,17 +11,27 @@ import { toast } from "react-toastify";
 import { useAddMovieMutation, useGetSingleMovieQuery, useUpdateMovieMutation } from "../../services/moviesApi";
 import { skipToken } from "@reduxjs/toolkit/query";
 
-const initialState = {
-  id: new Date().getTime(),
-  name: "",
-  genre: "",
-  description: "",
-  actors: [],
-  poster: "",
-};
+// const initialState = {
+//   id: new Date().getTime(),
+//   name: "",
+//   genre: "",
+//   description: "",
+//   actors: [],
+//   poster: "",
+// };
 export default function ChangeMovie({ isNewFilm, }) {
   const { movieId } = useParams();
   const { data: movie } = useGetSingleMovieQuery( movieId ? movieId : skipToken );
+  const [ values, setValues ] = useState( {
+    name: movie?.name || "",
+    genre: movie?.genre || "",
+    description: movie?.description || "",
+    actors: movie?.actors || [],
+    rating: 0,
+    poster: movie?.poster || "",
+    canDelete: true,
+  } );
+  console.log( values );
   const [ fileName, setFileName ] = useState( "" );
   const [ file, setFile ] = useState( null );
   const [ progress, setProgress ] = useState( null );
@@ -33,7 +43,20 @@ export default function ChangeMovie({ isNewFilm, }) {
   const [ updateMovie ] = useUpdateMovieMutation();
   const navigate = useNavigate();
 
-  console.log( fileName );
+  // console.log( "movie" );
+  // console.log( movie );
+
+  useEffect( () => {
+    setValues( {
+      name: movie?.name || "",
+      genre: movie?.genre || "",
+      description: movie?.description || "",
+      actors: movie?.actors || [],
+      rating: 0,
+      poster: movie?.poster || "",
+      canDelete: true,
+    } );
+  }, [ movie?.name, movie?.genre, movie?.description, movie?.actors, movie?.poster ] );
 
   useEffect( () => {
     setFormFields( [
@@ -43,7 +66,9 @@ export default function ChangeMovie({ isNewFilm, }) {
         placeholder: "Ирония судьбы",
         label: "Название фильма",
         required: true,
-        defaultValue: !isNewFilm ? movie?.name : null,
+        // defaultValue: !isNewFilm ? movie?.name : null,
+        // defaultValue: movie?.name ? movie.name : "",
+        defaultValue: values.name,
       },
       {
         type: "text",
@@ -51,7 +76,9 @@ export default function ChangeMovie({ isNewFilm, }) {
         placeholder: "Comedy",
         label: "Жанр",
         required: true,
-        defaultValue: !isNewFilm ? movie?.genre : null,
+        // defaultValue: !isNewFilm ? movie?.genre : null,
+        // defaultValue: movie?.genre ? movie.genre : "",
+        defaultValue: values.genre,
       },
       {
         type: "text",
@@ -59,7 +86,9 @@ export default function ChangeMovie({ isNewFilm, }) {
         placeholder: "Традиционный фильм для всей семьи на новый год",
         label: "Описание",
         required: true,
-        defaultValue: !isNewFilm ? movie?.description : null,
+        // defaultValue: !isNewFilm ? movie?.description : null,
+        // defaultValue: movie?.description ? movie.description : "",
+        defaultValue: values.description,
       },
       {
         type: "text",
@@ -67,7 +96,9 @@ export default function ChangeMovie({ isNewFilm, }) {
         placeholder: "Андрей Мягков, Барбара Брыльска, Юрий Яковлев",
         label: "Актеры",
         required: true,
-        defaultValue: !isNewFilm ? movie?.actors.join() : null,
+        // defaultValue: !isNewFilm ? movie?.actors.join() : null,
+        // defaultValue: movie?.actors ? movie.actors : [],
+        defaultValue: values.actors,
       },
       {
         type: "file",
@@ -75,12 +106,12 @@ export default function ChangeMovie({ isNewFilm, }) {
         placeholder: "Андрей Мягков, Барбара Брыльска, Юрий Яковлев",
         label: "Загрузите изображение",
         required: true,
+        // defaultValue: movie?.poster ? movie.poster : "",
+        defaultValue: "",
       },
 
     ] );
-  }, [ isNewFilm,
-    movie
-  ] );
+  }, [ isNewFilm, values, values?.poster, values?.actors, values?.genre, values?.description, values?.name ] );
 
   useEffect( () => {
     const uploadFile = () => {
@@ -144,8 +175,15 @@ export default function ChangeMovie({ isNewFilm, }) {
     setFile( e.target.files[ 0 ] );
   };
 
+  const handleChangeText = (e) => {
+    console.log( e.target.name );
+    console.log( e.target.value );
+    setValues( { ...values, [ e.target.name ]: e.target.value } );
+    console.log( values );
+  };
 
   const onSubmit = async(data) => {
+    console.log( data );
     if( isNewFilm ) {
       const movieData = {
         name: data.name,
@@ -154,6 +192,7 @@ export default function ChangeMovie({ isNewFilm, }) {
         actors: data.actors.split( "," ),
         rating: 0,
         poster: fileName,
+        canDelete: true,
       };
 
       try {
@@ -166,12 +205,14 @@ export default function ChangeMovie({ isNewFilm, }) {
 
     } else {
       const movieData = {
-        name: data.name,
-        genre: data.genre,
-        description: data.description,
-        actors: data.actors.split( "," ),
-        poster: fileName,
+        name: values.name,
+        genre: data.genre || "",
+        description: data.description || movie.description,
+        actors: data.actors.split( "," ) || movie.actors,
+        poster: fileName || movie.poster,
+        canDelete: true,
       };
+      console.log( movieData );
 
       try {
         await updateMovie( { id: movieId, data: movieData } );
@@ -203,6 +244,7 @@ export default function ChangeMovie({ isNewFilm, }) {
         btnText="Отправить"
         progress={ progress }
         handleChangeImage={ handleChangeImage }
+        handleChangeText={ handleChangeText }
       />
       {
         // isNewFilm ?

@@ -7,7 +7,7 @@ import { useDeleteMovieMutation } from "../../services/moviesApi";
 
 
 export default function MovieCard({ movie }) {
-  const [ deleteMovie] = useDeleteMovieMutation();
+  const [ deleteMovie ] = useDeleteMovieMutation();
 
   const handleDelete = async() => {
     if( window.confirm( `Вы действительно хотите удалить фильм ${ movie.name }?` ) ) {
@@ -17,6 +17,11 @@ export default function MovieCard({ movie }) {
         toast.info( `Фильм ${ movie.name } успешно удален` );
       }
     }
+  };
+
+  const handleClick = () => {
+    console.log( "ok" );
+    toast.info( "У Вас нет прав изменять этот фильм" );
   };
 
   return (
@@ -42,8 +47,17 @@ export default function MovieCard({ movie }) {
             </p>
 
             <div className={ styles[ "movie__btn-wrap" ] }>
-              <Link to={ `/movie/change/${ movie.id }` } className={ styles[ "movie__change" ] }>Изменить</Link>
-              <Button btnClass="btn--bg-red" func={ handleDelete } text="Удалить" />
+              { movie.canDelete ?
+                <>
+                  <Link to={ `/movie/change/${ movie.id }` } className={ styles[ "movie__change" ] }>Изменить</Link>
+                  <Button btnClass="btn--bg-red" func={ handleDelete } text="Удалить" canDelete={ movie.canDelete } />
+                </>
+                :
+                <>
+                  <Button btnClass="btn--bg-green" text="Изменить" func={ handleClick } />
+                  <Button btnClass="btn--bg-red" text="Удалить" func={ handleClick } />
+                </>
+              }
             </div>
           </div>
         </li>
