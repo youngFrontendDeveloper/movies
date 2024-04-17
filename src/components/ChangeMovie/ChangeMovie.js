@@ -107,7 +107,7 @@ export default function ChangeMovie({ isNewFilm, }) {
         label: "Загрузите изображение",
         required: true,
         // defaultValue: movie?.poster ? movie.poster : "",
-        defaultValue: "",
+        defaultValue: "d",
       },
 
     ] );

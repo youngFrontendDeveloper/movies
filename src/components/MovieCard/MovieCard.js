@@ -20,8 +20,7 @@ export default function MovieCard({ movie }) {
   };
 
   const handleClick = () => {
-    console.log( "ok" );
-    toast.info( "У Вас нет прав изменять этот фильм" );
+    toast.info( "Вы можете изменять только свои фильмы" );
   };
 
   return (
