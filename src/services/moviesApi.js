@@ -1,5 +1,5 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { collection, doc, getDoc, getDocs, addDoc, deleteDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, addDoc, deleteDoc, updateDoc, } from "firebase/firestore";
 import { database } from "../firebase/farebase";
 
 
@@ -30,7 +30,6 @@ export const moviesApi = createApi( {
         try {
           await addDoc( collection( database, "movies" ), {
             ...data,
-            // timestamp: serverTimestamp()
           } );
           return { data: "ok" };
         } catch( err ) {
@@ -47,7 +46,6 @@ export const moviesApi = createApi( {
         try {
           await updateDoc( doc( database, "movies", id ), {
             ...data,
-            // timestamp: serverTimestamp()
           } );
           return { data: "ok" };
         } catch( err ) {

@@ -2,8 +2,7 @@ import styles from "./ChangeMovie.module.scss";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
-import { database, storage } from "../../firebase/farebase";
+import {storage } from "../../firebase/farebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { Link } from "react-router-dom";
 import Form from "../Form/Form";
@@ -31,7 +30,6 @@ export default function ChangeMovie({ isNewFilm, }) {
     poster: movie?.poster || "",
     canDelete: true,
   } );
-  console.log( values );
   const [ fileName, setFileName ] = useState( "" );
   const [ file, setFile ] = useState( null );
   const [ progress, setProgress ] = useState( null );
@@ -42,9 +40,6 @@ export default function ChangeMovie({ isNewFilm, }) {
   const [ addMovie ] = useAddMovieMutation();
   const [ updateMovie ] = useUpdateMovieMutation();
   const navigate = useNavigate();
-
-  // console.log( "movie" );
-  // console.log( movie );
 
   useEffect( () => {
     setValues( {
@@ -107,7 +102,7 @@ export default function ChangeMovie({ isNewFilm, }) {
         label: "Загрузите изображение",
         required: true,
         // defaultValue: movie?.poster ? movie.poster : "",
-        defaultValue: "d",
+        defaultValue: "",
       },
 
     ] );

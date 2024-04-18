@@ -40,6 +40,9 @@ export default function MovieCard({ movie }) {
             <p className={ styles.movie__description }><span
               className={ styles.movie__span }
             >Описание:</span> { movie.description }</p>
+            <p className={ styles.movie__description }><span
+              className={ styles.movie__span }
+            >Жанр:</span> { movie.genre }</p>
             <p>
               <span className={ styles.movie__span }>Рейтинг: </span>
               { movie.rating } <StarIcon />

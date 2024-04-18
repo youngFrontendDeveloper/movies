@@ -1,88 +1,90 @@
-import styles from './SearchForm.module.scss';
-import { useState } from 'react';
-// import { searchMovie } from '../../actions';
-// import { useDispatch, useSelector } from 'react-redux';
-import FoundResult from '../FoundResult/FoundResult';
-import Button from '../Button/Button';
-import { useForm } from 'react-hook-form';
+import styles from "./SearchForm.module.scss";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { collection, query, where, getDocs, or } from "firebase/firestore";
+import FoundResult from "../FoundResult/FoundResult";
+import Button from "../Button/Button";
+import { database } from "../../firebase/farebase";
+
 
 export default function SearchForm() {
-  // const { movies } = useSelector((state) => state.movies);
-  // const [nothingFound, setNothingFound] = useState(false);
-  // const [isShowResults, setShowResults] = useState(false);
-  // const dispatch = useDispatch();
-  // const { foundMovies } = useSelector((state) => state.movies);
+  const [ foundMovies, setFoundMovies ] = useState( [] );
+  const [ isShowResults, setShowResults ] = useState( false );
+  const [ isNothingFound, setNothingFound ] = useState( false );
+  const moviesRef = collection( database, "movies" );
   const {
     register,
     handleSubmit,
     getValues,
     setValue,
     formState: { errors },
-  } = useForm({
-    mode: 'onTouched',
-  });
+  } = useForm( {
+    mode: "onTouched",
+  } );
 
-  const isShowResults = false;
-  const foundMovies = [];
-  const nothingFound = false;
+  const onSubmit = async() => {
+    const q = query(
+      moviesRef,
+      or( where( "name", "==", getValues().search ),
+        where( "description", "==", getValues().search ),
+        where( "genre", "==", getValues().search ),
+        where( "actors", "array-contains", getValues().search ),
+      )
+    );
 
+    const querySnapshot = await getDocs( q );
+    const arr = [];
+    querySnapshot.forEach( (doc) => {
+      arr.push( { id: doc.id, ...doc.data() } );
+      // console.log( doc.id, " => ", doc.data() );
+    } );
 
-  const onSubmit = async () => {
-    // setShowResults(true);
-    // const result = movies.filter((item) => {
-    //   const value = getValues().search;
-    //   return (
-    //     item.name.toLowerCase().includes(value.toLowerCase()) ||
-    //     item.description.toLowerCase().includes(value.toLowerCase()) ||
-    //     item.genre.toLowerCase().includes(value.toLowerCase())
-    //   );
-    // });
-    //
-    // if (result.length === 0) {
-    //   setNothingFound(true);
-    //   dispatch(searchMovie(result));
-    //   setValue('search', '');
-    //   return;
-    // }
-    // console.log(result);
-    // dispatch(searchMovie(result));
-    //
-    // setValue('search', '');
-    console.log("submit");
+    if( arr.length > 0 ) {
+      setFoundMovies( [ ...arr ] );
+    } else {
+      setNothingFound( true );
+    }
+
+    setValue( "search", "" );
+    setShowResults( true );
   };
 
   return (
-    <div className={styles['search-form__wrapper']}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles['search-form']}>
-        <div className={styles['search-form__item']}>
-          <label htmlFor="name" className={styles['search-form__label']}>
-            Поиск по названию или описанию фильма:
+    <div className={ styles[ "search-form__wrapper" ] }>
+      <form onSubmit={ handleSubmit( onSubmit ) } className={ styles[ "search-form" ] }>
+        <div className={ styles[ "search-form__item" ] }>
+          <label htmlFor="name" className={ styles[ "search-form__label" ] }>
+            Поиск по <span className={ styles[ "search-form__bold" ] }>точному и полному</span> названию, описанию,
+            жанру, или актерам фильма:
           </label>
           <input
             id="name"
             name="search"
             type="text"
-            className={styles['search-form__input']}
+            className={ styles[ "search-form__input" ] }
             placeholder="Комедия"
-            {...register('search', {
-              required: 'Пожалуйста, введите не менее 3-x символов',
+            onChange={ (e) => {
+              setValue( "search", e.target.value );
+            } }
+            { ...register( "search", {
+              required: "Пожалуйста, введите не менее 3-x символов",
               minLength: {
                 value: 3,
-                message: 'Должно быть не менее 3-x символов',
+                message: "Должно быть не менее 3-x символов",
               },
-            })}
+            } ) }
           />
         </div>
-        {errors.search && (
-          <p className={styles['search-form--error']}>
-            {errors.search.message}
+        { errors.search && (
+          <p className={ styles[ "search-form--error" ] }>
+            { errors.search.message }
           </p>
-        )}
+        ) }
         <Button text="Искать" />
       </form>
-      {isShowResults && (
-        <FoundResult foundMovies={foundMovies} nothingFound={nothingFound} />
-      )}
+      { isShowResults && (
+        <FoundResult foundMovies={ foundMovies } isNothingFound={ isNothingFound } />
+      ) }
     </div>
   );
 }

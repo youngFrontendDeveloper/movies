@@ -1,8 +1,9 @@
 import styles from "./FoundResult.module.scss";
 import { Link } from "react-router-dom";
 
-export default function FoundResult({foundMovies, nothingFound}){
-  return(
+export default function FoundResult({ foundMovies, isNothingFound }) {
+
+  return (
     <div className={ styles[ "search-result" ] }>
       <h3>Результаты поиска:</h3>
       {
@@ -12,8 +13,8 @@ export default function FoundResult({foundMovies, nothingFound}){
               foundMovies.map( item => {
                 return (
 
-                  <li key={ `search-${ item.id }` } className={styles["search-result__item"]}>
-                    <Link to={ `/movie/${item.id}` } className={styles["search-result__link"]}>
+                  <li key={ `search-${ item.id }` } className={ styles[ "search-result__item" ] }>
+                    <Link to={ `/movie/${ item.id }` } className={ styles[ "search-result__link" ] }>
                       { item.name }
                     </Link>
                   </li>
@@ -22,8 +23,8 @@ export default function FoundResult({foundMovies, nothingFound}){
               } )
             }
           </ol>
-        ) : nothingFound && <p>По Вашему запросу ничего не найдено</p>
+        ) : isNothingFound && <p>По Вашему запросу ничего не найдено</p>
       }
     </div>
-  )
+  );
 }

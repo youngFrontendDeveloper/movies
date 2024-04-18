@@ -1,0 +1,19 @@
+@use "../../styles/variables" as variable;
+
+.button-up {
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .3s;
+
+  &--visible{
+    opacity: 100%;
+  }
+
+  @media screen and (min-width: variable.$width-md){
+    bottom: 50px;
+    right: 30px;
+  }
+}
