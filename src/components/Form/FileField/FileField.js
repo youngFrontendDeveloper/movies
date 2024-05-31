@@ -25,7 +25,7 @@ export default function FileField({ item, register, errors, error, imageName, ha
 
         <input
           type="file"
-          // className={ `hidden ` }
+          className={ `hidden ` }
           name={ item.name }
           id={ item.name }
           defaultValue={ item.defaultValue ? item.defaultValue : "" }
