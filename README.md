@@ -41,17 +41,17 @@
 Скопируйте конфигурационные данные
 ### Создайте файл .env в корне проекта:
 .env
-REACT_APP_FIREBASE_API_KEY=your_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_I
+* REACT_APP_FIREBASE_API_KEY=your_api_key
+* REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+* REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+* REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+* EACT_APP_FIREBASE_MESSAGING_SENDER_I
 
 
 ### Запуск в режиме разработки:
 
 bash
-npm install
-npm start
-Приложение будет доступно по адресу: http://localhost:3000
+* npm install
+* npm start
+* Приложение будет доступно по адресу: http://localhost:3000
 
